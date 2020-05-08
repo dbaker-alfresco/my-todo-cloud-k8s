@@ -8,8 +8,8 @@ metadata:
 spec:
   replicas: 2
   selector:
-      matchLabels:
-        todo-app-pod: todo-proxy
+    matchLabels:
+      todo-app-pod: todo-proxy
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -22,10 +22,10 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - name: todo-proxy
-        image: gravitonian/todo-proxy:1.0
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            memory: "134217728"
+        - name: todo-proxy
+          image: dbaker7532/todo-proxy:1.0
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: '134217728'

@@ -8,8 +8,8 @@ metadata:
 spec:
   replicas: 1
   selector:
-      matchLabels:
-        todo-app-pod: todo-cache-ingestion
+    matchLabels:
+      todo-app-pod: todo-cache-ingestion
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -23,15 +23,20 @@ spec:
     spec:
       restartPolicy: Always
       initContainers:
-      - name: init-rabbitmq
-        image: busybox
-        command: ['sh', '-c', 'until nslookup todo-rabbitmq; do echo waiting for RabbitMQ; sleep 2; done;']
+        - name: init-rabbitmq
+          image: busybox
+          command:
+            [
+              'sh',
+              '-c',
+              'until nslookup todo-rabbitmq; do echo waiting for RabbitMQ; sleep 2; done;',
+            ]
       containers:
-      - image: gravitonian/todo-cache-ingestion:1.0
-        name: todo-cache-ingestion
-        envFrom:
-          - configMapRef:
-              name: todo-config
-        resources:
-          limits:
-            memory: "134217728"
+        - image: dbaker7532/todo-cache-ingestion:1.0
+          name: todo-cache-ingestion
+          envFrom:
+            - configMapRef:
+                name: todo-config
+          resources:
+            limits:
+              memory: '134217728'
