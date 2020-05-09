@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: todo
+  namespace: {{ template "todo.fullname" . }}-todo
   name: todo-proxy
   labels:
     todo-app-deployment: todo-proxy
@@ -23,7 +23,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: todo-proxy
-          image: dbaker7532/todo-proxy:1.0
+          image: {{ .Values.todoImageUser }}/todo-proxy:{{ .Values.todoVersion }}
           ports:
             - containerPort: 80
           resources:

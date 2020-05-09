@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: todo
+  namespace: {{ template "todo.fullname" . }}-todo
   name: todo-storage-service
   labels:
     todo-app-deployment: todo-storage-service
@@ -22,7 +22,7 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-        - image: dbaker7532/todo-storage-service:1.0
+        - image: {{ .Values.todoImageUser }}/todo-storage-service:{{ .Values.todoVersion }}
           name: todo-storage-service
           envFrom:
             - configMapRef:

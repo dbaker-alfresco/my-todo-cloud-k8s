@@ -10,7 +10,7 @@
     },
     {
       "name": "todo-cache-ingestion",
-      "image": "dbaker7532/todo-cache-ingestion:1.0",
+      "image": "dbaker7532/todo-cache-ingestion:{{ .Values.todoVersion }}",
       "hostname": "todo-cache-ingestion",
       "memory": 128,
       "essential": false,
@@ -19,14 +19,14 @@
     },
     {
       "name": "todo-cache-service",
-      "image": "dbaker7532/todo-cache-service:1.0",
+      "image": "dbaker7532/todo-cache-service:{{ .Values.todoVersion }}",
       "hostname": "todo-cache-service",
       "memory": 128,
       "essential": false
     },
     {
       "name": "todo-search-ingestion",
-      "image": "dbaker7532/todo-search-ingestion:1.0",
+      "image": "dbaker7532/todo-search-ingestion:{{ .Values.todoVersion }}",
       "hostname": "todo-search-ingestion",
       "memory": 128,
       "essential": false,
@@ -35,14 +35,14 @@
     },
     {
       "name": "todo-search-service",
-      "image": "dbaker7532/todo-search-service:1.0",
+      "image": "dbaker7532/todo-search-service:{{ .Values.todoVersion }}",
       "hostname": "todo-search-service",
       "memory": 128,
       "essential": false
     },
     {
       "name": "todo-storage-ingestion",
-      "image": "dbaker7532/todo-storage-ingestion:1.0",
+      "image": "dbaker7532/todo-storage-ingestion:{{ .Values.todoVersion }}",
       "hostname": "todo-storage-ingestion",
       "memory": 128,
       "essential": false,
@@ -51,14 +51,14 @@
     },
     {
       "name": "todo-storage-service",
-      "image": "dbaker7532/todo-storage-service:1.0",
+      "image": "dbaker7532/todo-storage-service:{{ .Values.todoVersion }}",
       "hostname": "todo-storage-service",
       "memory": 128,
       "essential": false
     },
     {
       "name": "todo-api-gateway",
-      "image": "dbaker7532/todo-api-gateway:1.0",
+      "image": "dbaker7532/todo-api-gateway:{{ .Values.todoVersion }}",
       "hostname": "todo-api-gateway",
       "memory": 128,
       "essential": false,
@@ -75,14 +75,14 @@
     },
     {
       "name": "todo-view",
-      "image": "dbaker7532/todo-view:1.0",
+      "image": "dbaker7532/todo-view:{{ .Values.todoVersion }}",
       "hostname": "todo-view",
       "memory": 768,
       "essential": false
     },
     {
       "name": "todo-proxy",
-      "image": "dbaker7532/todo-proxy:1.0",
+      "image": "dbaker7532/todo-proxy:{{ .Values.todoVersion }}",
       "memory": 128,
       "essential": true,
       "portMappings": [

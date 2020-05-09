@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: todo
+  namespace: {{ template "todo.fullname" . }}-todo
   name: todo-cache-ingestion
   labels:
     todo-app-deployment: todo-cache-ingestion
@@ -32,7 +32,7 @@ spec:
               'until nslookup todo-rabbitmq; do echo waiting for RabbitMQ; sleep 2; done;',
             ]
       containers:
-        - image: dbaker7532/todo-cache-ingestion:1.0
+        - image: {{ .Values.todoImageUser }}/todo-cache-ingestion:{{ .Values.todoVersion }}
           name: todo-cache-ingestion
           envFrom:
             - configMapRef:

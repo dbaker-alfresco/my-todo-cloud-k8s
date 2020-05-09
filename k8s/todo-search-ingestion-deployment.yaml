@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  namespace: todo
+  namespace: {{ template "todo.fullname" . }}-todo
   name: todo-search-ingestion
   labels:
     todo-app-deployment: todo-search-ingestion
@@ -40,7 +40,7 @@ spec:
             ]
       containers:
         - name: todo-search-ingestion
-          image: dbaker7532/todo-search-ingestion:1.0
+          image: {{ .Values.todoImageUser }}/todo-search-ingestion:{{ .Values.todoVersion }}
           envFrom:
             - configMapRef:
                 name: todo-config
